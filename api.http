@@ -1,0 +1,14 @@
+@host=http://localhost:3000
+
+
+GET {{host}}/api/hello
+
+###
+
+POST {{host}}/api/author
+Content-Type: application/json
+
+{
+    "name":"suraj",
+    "age":23 
+}
