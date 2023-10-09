@@ -10,17 +10,27 @@
     "pages:build": "npx @cloudflare/next-on-pages@1",
     "pages:deploy": "npm run pages:build && wrangler pages deploy .vercel/output/static",
     "pages:watch": "npx @cloudflare/next-on-pages@1 --watch",
-    "pages:dev": "npx wrangler pages dev .vercel/output/static --compatibility-flag=nodejs_compat"
+    "pages:dev": "npx wrangler pages dev .vercel/output/static --compatibility-flag=nodejs_compat",
+    "generate-sql": "drizzle-kit generate:mysql --config=sql-drizzle.config.ts",
+    "generate-pg": "drizzle-kit generate:pg --config=pg-drizzle.config.ts",
+    "drop-pg": "drizzle-kit drop --config=pg-drizzle.config.ts",
+    "drop-sql": "drizzle-kit drop --config=sql-drizzle.config.ts",
+    "migrate-pg": "tsx db/pg-migrate.ts",
+    "migrate-sql": "tsx db/sql-migrate.ts"
   },
   "dependencies": {
     "@hono/valibot-validator": "^0.2.0",
+    "@neondatabase/serverless": "^0.6.0",
+    "@planetscale/database": "^1.11.0",
     "@types/node": "20.8.2",
     "@types/react": "18.2.25",
     "@types/react-dom": "18.2.10",
     "autoprefixer": "10.4.16",
+    "drizzle-orm": "^0.28.6",
     "eslint": "8.50.0",
     "eslint-config-next": "13.5.4",
     "next": "13.5.4",
+    "next-auth": "^0.0.0-manual.7264de5f",
     "postcss": "8.4.31",
     "react": "18.2.0",
     "react-dom": "18.2.0",
@@ -29,7 +39,11 @@
   },
   "devDependencies": {
     "@cloudflare/next-on-pages": "^1.6.3",
+    "dotenv": "^16.3.1",
+    "drizzle-kit": "^0.19.13",
     "eslint-plugin-next-on-pages": "^1.6.3",
+    "postgres": "^3.3.5",
+    "tsx": "^3.13.0",
     "vercel": "^32.4.1"
   }
 }
